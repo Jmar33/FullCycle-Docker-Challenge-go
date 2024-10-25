@@ -6,7 +6,7 @@ RUN go mod init example/hello
 
 COPY . .
 
-RUN  CGO_ENABLED=0 GOOS=linux go build -o hello
+RUN  CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -gcflags=all=-l; stat -c %s hello
 
 FROM scratch
 
